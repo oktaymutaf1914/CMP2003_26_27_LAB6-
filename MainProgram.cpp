@@ -196,11 +196,11 @@ void arrayLinkedList<Type>::insertLast(const Type& newItem) {
     if (head == -1) {
         head = i;
     } else {
-        int current = head;
-        while (cells[current].next != -1) {
-            current = cells[current].next;
+        int last = head;
+        while (cells[last].next != -1) {
+            last = cells[last].next;
         }
-        cells[current].next = i;
+        cells[last].next = i;
     }
     count++;
 }
@@ -216,9 +216,9 @@ void arrayLinkedList<Type>::deleteNode(const Type& item) {
     }
 
     if (cells[head].info == item) {
-        int temp = head;
+        int old = head;
         head = cells[head].next;
-        freeNode(temp);
+        freeNode(old);
         count--;
         return;
     }
@@ -233,12 +233,14 @@ void arrayLinkedList<Type>::deleteNode(const Type& item) {
 
     if (current == -1) {
         cerr << "The item to be deleted is not in the list." << endl;
-    } else {
+        return ;
+    } 
+    
         cells[prev].next = cells[current].next;
         freeNode(current);
         count--;
     }
-}
+
 
 
 // ##########################################################
