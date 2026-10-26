@@ -1,0 +1,11 @@
+main
+main.exe
+grader
+grader.exe
+*.o
+
+# teacher-only (never pushed to the template repo)
+/autograder.cpp
+solution/
+classroom50_autograder/
+classroom50_tests.json
